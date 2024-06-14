@@ -29,7 +29,7 @@ class View(ft.View):
                     content=ft.Column(
                         alignment=ft.MainAxisAlignment.CENTER,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                        width=700,
+                        width=self.page.window_width,
                         controls=self.content_controls
                     )
                 ),

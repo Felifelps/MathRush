@@ -38,10 +38,10 @@ class CustomButton(ft.FilledButton):
             **kwargs
         )
 
-
 class MathSymbolButton(ft.Container):
     size = 100
-    def __init__(self, symbol, **kwargs):
+    def __init__(self, symbol, operation, **kwargs):
+        self.operation = operation
         super().__init__(
             content=ft.IconButton(
                 style=ft.ButtonStyle(
@@ -51,10 +51,17 @@ class MathSymbolButton(ft.Container):
                     symbol,
                     size=35,
                     text_align=ft.VerticalAlignment.CENTER
-                )
+                ),
+                on_click=self.on_click_event
             ),
             width=self.size,
             height=self.size,
             bgcolor=ft.colors.INVERSE_PRIMARY,
             **kwargs
         )
+
+    def on_click_event(self, e):
+        e.page.client_storage.set(
+            'operation', self.operation
+        )
+        e.page.go('/game')

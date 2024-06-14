@@ -3,6 +3,7 @@ import flet as ft
 from .components import Message
 from .game_page import GamePage
 from .menu_page import MenuPage
+from .score_page import ScorePage
 from .view import View
 
 def main(page: ft.Page):
@@ -14,7 +15,8 @@ def main(page: ft.Page):
 
     page.views.extend([
         MenuPage(route="/menu"),
-        GamePage(route="/game")
+        GamePage(route="/game"),
+        ScorePage(route="/score")
     ])
 
     def on_route_change(e):
@@ -23,4 +25,4 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = on_route_change
-    page.go("/game")
+    page.go("/menu")
