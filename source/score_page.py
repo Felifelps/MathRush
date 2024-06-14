@@ -29,7 +29,7 @@ class ScorePage(View):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.back_to_menu.on_click = lambda e: e.page.go('/menu')
+        self.back_to_menu.on_click = lambda e: e.page.go('/')
 
     def on_pre_view(self, e):
         score = e.page.client_storage.get('score')

@@ -14,7 +14,7 @@ def main(page: ft.Page):
     View.page = page
 
     page.views.extend([
-        MenuPage(route="/menu"),
+        MenuPage(route="/"),
         GamePage(route="/game"),
         ScorePage(route="/score")
     ])
@@ -25,4 +25,4 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = on_route_change
-    page.go("/menu")
+    page.go("/")

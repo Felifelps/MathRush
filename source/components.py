@@ -40,7 +40,7 @@ class CustomButton(ft.FilledButton):
 
 class MathSymbolButton(ft.Container):
     size = 100
-    def __init__(self, symbol, operation, **kwargs):
+    def __init__(self, operation, **kwargs):
         self.operation = operation
         super().__init__(
             content=ft.IconButton(
@@ -48,7 +48,7 @@ class MathSymbolButton(ft.Container):
                     shape=ft.RoundedRectangleBorder(radius=0)
                 ),
                 content=ft.Text(
-                    symbol,
+                    '',
                     size=35,
                     text_align=ft.VerticalAlignment.CENTER
                 ),
@@ -56,7 +56,7 @@ class MathSymbolButton(ft.Container):
             ),
             width=self.size,
             height=self.size,
-            bgcolor=ft.colors.INVERSE_PRIMARY,
+            bgcolor=ft.colors.TRANSPARENT,
             **kwargs
         )
 
