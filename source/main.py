@@ -14,10 +14,12 @@ def main(page: ft.Page):
     View.page = page
 
     page.views.extend([
-        MenuPage(route="/"),
         GamePage(route="/game"),
-        ScorePage(route="/score")
+        ScorePage(route="/score"),
+        MenuPage(route="/"),
     ])
+
+    page.on_error = lambda e: print(e.name, e.control, e.data)
 
     def on_route_change(e):
         page.views.sort(key=lambda view: view.route == page.route)
@@ -25,4 +27,4 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = on_route_change
-    page.go("/")
+    page.go('/')

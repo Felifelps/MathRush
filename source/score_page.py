@@ -37,4 +37,4 @@ class ScorePage(View):
         operation = qg.operations.get(
             e.page.client_storage.get('operation')
         )
-        self.score_text.value = f'Pontuação Final\n{score} de {current_level}\nOperação: {operation}'
+        self.score_text.value = f'Pontuação Final\n{score} de {current_level - 1}\nOperação: {operation}'

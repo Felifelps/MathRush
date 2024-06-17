@@ -22,35 +22,21 @@ class Message(ft.SnackBar):
         self.open = True
         self.page.update()
 
-
-class CustomButton(ft.FilledButton):
-    def __init__(self, text, **kwargs):
-        super().__init__(
-            content=ft.Text(
-                text,
-            ),
-            style=ft.ButtonStyle(
-                shape=ft.RoundedRectangleBorder(
-                    radius=10,
-                ),
-                bgcolor=ft.colors.INVERSE_PRIMARY,
-            ),
-            **kwargs
-        )
-
 class MathSymbolButton(ft.Container):
     size = 100
     def __init__(self, operation, **kwargs):
         self.operation = operation
         super().__init__(
-            content=ft.IconButton(
-                style=ft.ButtonStyle(
-                    shape=ft.RoundedRectangleBorder(radius=0)
-                ),
+            content=ft.FilledButton(
                 content=ft.Text(
-                    '',
-                    size=35,
-                    text_align=ft.VerticalAlignment.CENTER
+                    operation,
+                    size=24,
+                    text_align=ft.TextAlign.CENTER
+                ),
+                style=ft.ButtonStyle(
+                    shape=ft.RoundedRectangleBorder(radius=0),
+                    bgcolor=ft.colors.INVERSE_PRIMARY,
+                    color=ft.colors.WHITE
                 ),
                 on_click=self.on_click_event
             ),
