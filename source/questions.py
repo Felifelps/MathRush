@@ -37,7 +37,7 @@ class QuestionGenerator:
     @classmethod
     def __add_question(cls):
         # Addition operation
-        n1 = random.randint(0, cls.f_limit)
+        n1 = random.randint(1, cls.f_limit)
         n2 = random.randint(0, cls.f_limit)
         return f"{n1} + {n2} = ?", n1 + n2
 

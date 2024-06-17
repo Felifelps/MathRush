@@ -10,12 +10,12 @@ class GamePage(View):
     operation = '+'
     back_button = ft.IconButton('arrow_back')
     level_counter = ft.Text(
-        f'Nível {__current_level}',
+        f'Questão n° {__current_level}',
         size=30,
         text_align=ft.TextAlign.CENTER,
     )
     score_counter = ft.Text(
-        f'Pontuação: {__score}'
+        f'Pontuação: {__score}/{__current_level - 1}'
     )
     question = ft.Text(
         '1 + 1 = ?',
@@ -72,16 +72,8 @@ class GamePage(View):
     @current_level.setter
     def current_level(self, value):
         self.__current_level = value
-        self.level_counter.value = f'Nível {self.current_level}'
-
-    @property
-    def score(self):
-        return self.__score
-
-    @score.setter
-    def score(self, value):
-        self.__score = value
-        self.score_counter.value = f'Pontuação: {self.__score}'
+        self.level_counter.value = f'Questão n° {self.current_level}'
+        self.score_counter.value = f'Pontuação: {self.__score}/{self.current_level - 1}'
 
     def new_question(self):
         self.question.value, self.answer = qg.gen_question(self.operation)
@@ -91,7 +83,7 @@ class GamePage(View):
         if not self.answer_field.value:
             return None
         if int(self.answer_field.value) == self.answer:
-            self.score += 1
+            self.__score += 1
             e.page.snack_bar.message(
                 'Resposta correta!',
                 'success'
@@ -112,14 +104,14 @@ class GamePage(View):
             pass
 
     def on_pre_view(self, e):
+        self.__score = 0
         self.current_level = 1
-        self.score = 0
         self.operation = e.page.client_storage.get('operation')
         self.new_question()
 
     def show_score(self, e):
         data = {
-            'score': self.score,
+            'score': self.__score,
             'current_level': self.current_level,
             'operation': self.operation
         }
